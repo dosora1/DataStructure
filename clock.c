@@ -1,3 +1,5 @@
+//실행시간을 측정
+
 #include <stdio.h>
 #include <time.h>
 
