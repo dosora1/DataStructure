@@ -24,7 +24,7 @@ ListNode* create_node(element data){
 
 void insert_node(ListNode** phead, ListNode* p, ListNode* new_node){
 	if (*phead==NULL) { // 공백리스트인 경우
-		new_node->link==NULL;
+		new_node->link=NULL;
 		*phead=new_node;
 	}
 	else if (p==NULL) { // p가 NULL 이면 첫번째 노드로 삽입
@@ -109,7 +109,6 @@ ListNode* reverse(ListNode* head){
 		p=p->link; // p를 다음 노드로 이동
 		q->link=r; // q의 링크 방향을 바꾼다
 	}	
-
 	return q; // q는 역순으로 된 리스트의 헤드 포인터
 }
 
