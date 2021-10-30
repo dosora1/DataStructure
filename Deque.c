@@ -56,16 +56,16 @@ int is_empty(DequeType* dq) {
 void add_rear(DequeType* dq, element item) {
 	DlistNode* new_node = create_node(dq->tail, item, NULL); //기존의 꼬리와 연결(우연결), 아이템, 뉴노드의 rlink
 
-	if (is_empty(dq))
-		dq->head = new_node;
-	else
-		dq->tail->rlink = new_node;
-	dq->tail = new_node;
+	if (is_empty(dq)) //기존 덱이 비었으면
+		dq->head = new_node; //뉴노드가 헤드가 됨
+	else //기존 덱이 있다면
+		dq->tail->rlink = new_node; //기존 덱의 테일의 rlink가 뉴노드와 이어짐
+	dq->tail = new_node; //기존의 테일은 뉴노드로 바뀜
 }
 
 //왼추가
 void add_front(DequeType* dq, element item) {
-	DlistNode* new_node = create_node(NULL, item, dq->head);
+	DlistNode* new_node = create_node(NULL, item, dq->head); //왼쪽에서 첫번째
 
 	if (is_empty(dq))
 		dq->tail = new_node;
@@ -85,8 +85,8 @@ element delete_front(DequeType* dq) {
 		removed_node = dq->head; //지울 노드 저장
 		item = removed_node->data; //지울 값 저장
 		dq->head = dq->head->rlink; //헤드가 가리키는 곳 이동
-		free(removed_node);
-		if (dq->head == NULL)
+		free(removed_node); //메모리해제
+		if (dq->head == NULL) //
 			dq->tail = NULL;
 		else
 			dq->head->llink = NULL;
@@ -99,7 +99,7 @@ element delete_rear(DequeType* dq) {
 	DlistNode* removed_node;
 
 	if (is_empty(dq)) //비었으면
-		error("Deque is empty\n");
+		printf("Deque is empty\n");
 	else { //차있으면
 		removed_node = dq->tail;
 		item = removed_node->data; //삭제할 노드, 데이터 각 저장
