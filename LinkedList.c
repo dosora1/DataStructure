@@ -107,7 +107,7 @@ ListNode* reverse(ListNode* head){
 		r=q; // r 은 역순으로 된 노드.
 		q=p; // r은 q, q는 p를 차례로 따라간다
 		p=p->link; // p를 다음 노드로 이동
-		q=; // q의 링크 방향을 바꾼다
+		q->link=r; // q의 링크 방향을 바꾼다
 	}	
 
 	return q; // q는 역순으로 된 리스트의 헤드 포인터
@@ -119,18 +119,18 @@ int main()
 	ListNode* head2 = NULL;
 	ListNode* head3 = NULL;
 
-	insert_node(&head1,head,create_node(10)); // head1에 10노드를 insert
+	insert_node(&head1,head1,create_node(10)); // head1에 10노드를 insert
 	display(head1); // head1 display
 	insert_node(&head1, search(head1,10), create_node(20)); // head1의 10노드 다음에 20노드를 insert
 	insert_node(&head1, search(head1, 20), create_node(30)); // head1의 20노드 다음에 30노드를 insert
 	display(head1); // head1 display
-	remove_node(&head1,; // head1의 20노드 다음의 30노드를 remove
+	remove_node(&head1,search(head1,20),search(head1,30)); // head1의 20노드 다음의 30노드를 remove
 	display(head1); // head1 display
 
 	insert_node(&head2, head2, create_node(40)); // head2에 40노드를 insert
 	display(head2); // head2 display
 
-	concat(head1,head2); // head3는 head1과 head2를 이어붙임
+	head3=concat(head1,head2); // head3는 head1과 head2를 이어붙임
 	display(head3); // head3 display
 
 	return 0;
