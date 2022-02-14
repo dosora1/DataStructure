@@ -31,3 +31,7 @@ DataStructure.vcxproj
 *.ilk
 *.filters
 *.vcxproj
+.vs/DataStructure/v16/.suo
+*.db
+*.json
+*.sqlite
